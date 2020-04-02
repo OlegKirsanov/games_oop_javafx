@@ -71,10 +71,10 @@ public class Logic {
     public boolean isWin() {
         int[][] table = this.convert();
         boolean result = false;
-        int horCount = 0;
-        int verCount = 0;
         for (int iDiag = 0; iDiag < table.length; iDiag++) {
             if (table[iDiag][iDiag] == 1) {
+                int horCount = 0;
+                int verCount = 0;
                 for (int index = 0; index < table.length; index++) {
                     if (table[index][iDiag] == 1) {
                         horCount++;
@@ -83,10 +83,11 @@ public class Logic {
                         verCount++;
                     }
                 }
+                if (horCount == table.length || verCount == table.length) {
+                    result = true;
+                    break;
+                }
             }
-        }
-        if (horCount == table.length || verCount == table.length) {
-            result = true;
         }
         return result;
     }
